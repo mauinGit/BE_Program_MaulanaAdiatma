@@ -28,7 +28,7 @@ func DBInit() {
 }
 
 func DBMigrate() {
-	if err := DB.Debug().AutoMigrate(&model.Event{}, &model.User{}); err != nil {
+	if err := DB.Debug().AutoMigrate(&model.Event{}, &model.User{}, &model.Booking{}); err != nil {
 		panic("Failed to migrate database")
 	}
 	fmt.Println("Database migration completed")

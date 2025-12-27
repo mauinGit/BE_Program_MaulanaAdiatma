@@ -6,4 +6,5 @@ func RouteList(app *fiber.App) {
 	api := app.Group("/api")
 	EventRoutes(api)
 	UserRoutes(api)
+	BookingRoutes(api)
 }
