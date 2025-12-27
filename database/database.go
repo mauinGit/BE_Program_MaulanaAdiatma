@@ -1,6 +1,7 @@
 package database
 
 import (
+	"GDGBatch2026/model"
 	"fmt"
 	"os"
 
@@ -26,9 +27,9 @@ func DBInit() {
 	DB = db
 }
 
-// func DBMigrate() {
-// 	if err := DB.Debug().AutoMigrate(); err != nil {
-// 		panic("Failed to migrate database")
-// 	}
-// 	fmt.Println("Database migration completed")
-// }
+func DBMigrate() {
+	if err := DB.Debug().AutoMigrate(&model.Event{}); err != nil {
+		panic("Failed to migrate database")
+	}
+	fmt.Println("Database migration completed")
+}
