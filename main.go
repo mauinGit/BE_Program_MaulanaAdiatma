@@ -13,8 +13,9 @@ func main() {
 	config.ENVInit()
 	database.DBInit()
 	database.DBMigrate()
-	
+
 	app := fiber.New()
+	app.Static("/assets", "./assets")
 
 	route.RouteList(app)
 

@@ -80,3 +80,18 @@ func CreateEvent(c *fiber.Ctx) error {
 		"event":   event,
 	})
 }
+
+func GetEvent(c *fiber.Ctx) error {
+	var event []model.Event
+
+	if err := database.DB.Find(&event).Error; err != nil {
+		return c.Status(500).JSON(fiber.Map{
+			"error": "Failed to get event",
+		})
+	}
+
+	return c.JSON(fiber.Map{
+		"message": "Success get event",
+		"data":    event,
+	})
+}
