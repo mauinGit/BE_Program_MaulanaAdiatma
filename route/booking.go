@@ -10,4 +10,8 @@ import (
 func BookingRoutes(api fiber.Router) {
 	booking := api.Group("/booking")
 	booking.Post("/", middleware.AuthRequired, controller.CreateBooking)
+	booking.Get("/me", middleware.AuthRequired, controller.GetMyBookings)
+	booking.Get("/", middleware.AuthRequired, middleware.AdminOnly, controller.GetAllBookings)
+	booking.Get("/:event_id", middleware.AuthRequired, middleware.AdminOnly, controller.GetBookingsByEventID)
+	booking.Delete("/:id", middleware.AuthRequired, controller.CancelMyBooking)
 }
