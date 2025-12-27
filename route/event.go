@@ -10,4 +10,6 @@ func EventRoutes(api fiber.Router) {
 	event := api.Group("/event")
 	event.Post("/", controller.CreateEvent)
 	event.Get("/", controller.GetEvent)
+	event.Put("/:id", controller.UpdateEvent)
+	// event.Delete("/:id", controller.DeleteEvent)
 }
