@@ -38,7 +38,16 @@ func AuthRequired(c *fiber.Ctx) error {
 func AdminOnly(c *fiber.Ctx) error {
 	if c.Locals("role") != "admin" {
 		return c.Status(403).JSON(fiber.Map{
-			"error": "Forbidden ",
+			"error": "Forbidden (admin only)",
+		})
+	}
+	return c.Next()
+}
+
+func UserOnly(c *fiber.Ctx) error {
+	if c.Locals("role") != "user" {
+		return c.Status(403).JSON(fiber.Map{
+			"error": "Forbidden (user only)",
 		})
 	}
 	return c.Next()

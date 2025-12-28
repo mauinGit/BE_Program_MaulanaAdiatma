@@ -11,6 +11,7 @@ func EventRoutes(api fiber.Router) {
 	event := api.Group("/event")
 	event.Post("/", middleware.AuthRequired, middleware.AdminOnly, controller.CreateEvent)
 	event.Get("/", middleware.AuthRequired, controller.GetEvent)
+	event.Get("/:id", middleware.AuthRequired, controller.GetEventByID)
 	event.Put("/:id", middleware.AuthRequired, middleware.AdminOnly, controller.UpdateEvent)
-	// event.Delete("/:id", controller.DeleteEvent)
+	event.Delete("/:id", middleware.AuthRequired, middleware.AdminOnly, controller.DeleteEvent)
 }

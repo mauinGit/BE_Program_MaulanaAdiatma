@@ -96,6 +96,24 @@ func GetEvent(c *fiber.Ctx) error {
 	})
 }
 
+func GetEventByID(c *fiber.Ctx) error {
+	id := c.Params("id")
+
+	var event model.Event
+
+	if err := database.DB.First(&event, id).Error; err != nil {
+		return c.Status(404).JSON(fiber.Map{
+			"error": "Event not found",
+		})
+	}
+
+	return c.JSON(fiber.Map{
+		"message": "Success get event",
+		"data":    event,
+	})
+}
+
+
 func UpdateEvent(c *fiber.Ctx) error {
 	id := c.Params("id")
 	if id == "" {
@@ -180,32 +198,31 @@ func UpdateEvent(c *fiber.Ctx) error {
 	})
 }
 
-// func DeleteEvent(c *fiber.Ctx) error {
-// 	id := c.Params("id")
+func DeleteEvent(c *fiber.Ctx) error {
+	id := c.Params("id")
 
-// 	var event model.Event
-// 	if err := database.DB.First(&event, id).Error; err != nil {
-// 		return c.Status(404).JSON(fiber.Map{
-// 			"error": "Event not found",
-// 		})
-// 	}
+	var event model.Event
+	if err := database.DB.First(&event, id).Error; err != nil {
+		return c.Status(404).JSON(fiber.Map{
+			"error": "Event not found",
+		})
+	}
 
-// 	// optional: cek apakah sudah ada booking
-// 	var count int64
-// 	database.DB.Model(&model.Booking{}).Where("event_id = ?", event.ID).Count(&count)
-// 	if count > 0 {
-// 		return c.Status(400).JSON(fiber.Map{
-// 			"error": "Event tidak bisa dihapus karena sudah ada booking",
-// 		})
-// 	}
+	var count int64
+	database.DB.Model(&model.Booking{}).Where("event_id = ?", event.ID).Count(&count)
+	if count > 0 {
+		return c.Status(400).JSON(fiber.Map{
+			"error": "Event tidak bisa dihapus karena sudah ada booking",
+		})
+	}
 
-// 	if err := database.DB.Delete(&event).Error; err != nil {
-// 		return c.Status(500).JSON(fiber.Map{
-// 			"error": "Failed to delete event",
-// 		})
-// 	}
+	if err := database.DB.Delete(&event).Error; err != nil {
+		return c.Status(500).JSON(fiber.Map{
+			"error": "Failed to delete event",
+		})
+	}
 
-// 	return c.JSON(fiber.Map{
-// 		"message": "Event deleted successfully",
-// 	})
-// }
+	return c.JSON(fiber.Map{
+		"message": "Event deleted successfully",
+	})
+}
