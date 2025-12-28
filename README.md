@@ -1,5 +1,4 @@
 # Backend Ticketing Event API
-
 Backend Ticketing Event API adalah sebuah RESTful API yang dibangun menggunakan
 Golang dan Fiber untuk mendukung sistem pemesanan tiket event secara online.
 Sistem ini memungkinkan admin untuk mengelola event dan user untuk melakukan
@@ -8,7 +7,6 @@ booking tiket dengan aman tanpa risiko overselling.
 ---
 
 ## 🚀 Tech Stack
-
 - Golang
 - Fiber
 - GORM
@@ -42,7 +40,6 @@ booking tiket dengan aman tanpa risiko overselling.
 ---
 
 ## 🔐 Authentication & Authorization
-
 API ini menggunakan JWT (JSON Web Token) sebagai mekanisme autentikasi.
 Token dikirim melalui HTTP Header dengan format:
 
@@ -53,7 +50,6 @@ Sistem menerapkan role-based access control:
 ---
 
 ## 🛡️ Keamanan & Validasi
-
 - Password disimpan menggunakan hashing (bcrypt)
 - Booking menggunakan database transaction untuk mencegah overselling tiket
 - Event tidak dapat dihapus apabila sudah memiliki data booking
@@ -62,10 +58,72 @@ Sistem menerapkan role-based access control:
 ---
 
 ## 📄 API Documentation
-
 Dokumentasi lengkap API tersedia dan dapat diakses secara publik melalui Postman:
 
 🔗 **Postman API Documentation**  
-Autentikasi: https://documenter.getpostman.com/view/44006656/2sBXVbGDER
-Booking API: https://documenter.getpostman.com/view/44006656/2sBXVbGDES#ddda9b9d-dc65-4959-a376-991894795f0b
-Event API: https://documenter.getpostman.com/view/44006656/2sBXVbGDET#d7ad131e-7038-43a4-9616-d6701a01f955
+Autentikasi API: https://documenter.getpostman.com/view/44006656/2sBXVbGDER
+Booking API: https://documenter.getpostman.com/view/44006656/2sBXVbGDES
+Event API: https://documenter.getpostman.com/view/44006656/2sBXVbGDET
+
+## ▶️ Cara Menjalankan Project
+1. Clone repository
+```bash
+https://github.com/mauinGit/BE_Program_MaulanaAdiatma.git
+```
+
+2. Install dependency
+```bash
+go mod tidy
+```
+
+3. Jalankan sistem
+```bash
+go run main.go
+```
+
+4. Sistem akan berjalan pada localhost kamu
+```bash
+http://127.0.0.1:3000
+```
+
+Siap 👍 **simpel, ringkas, dan siap copy–paste ke GitHub**.
+Ini **STRUKTUR FOLDER LENGKAP** sesuai **punya kamu**, tanpa penjelasan panjang.
+
+---
+## 📁 Struktur Folder
+
+BE_Program_MaulanaAdiatma/
+├── assets/
+│   └── *.jpg / *.png / *.webp
+├── config/
+│   └── env.go
+├── controller/
+│   ├── user.go
+│   ├── event.go
+│   └── booking.go
+├── database/
+│   └── database.go
+├── middleware/
+│   └── auth.go
+├── model/
+│   ├── user.go
+│   ├── event.go
+│   └── booking.go
+├── route/
+│   ├── routes.go
+│   ├── user.go
+│   ├── event.go
+│   └── booking.go
+├── util/
+│   ├── jwt.go
+│   └── cover.go
+├── .env
+├── .env.example
+├── .gitignore
+├── go.mod
+├── go.sum
+├── main.go
+└── README.md
+
+```
+
