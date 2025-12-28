@@ -61,9 +61,9 @@ Sistem menerapkan role-based access control:
 Dokumentasi lengkap API tersedia dan dapat diakses secara publik melalui Postman:
 
 🔗 **Postman API Documentation**  
-Autentikasi API: https://documenter.getpostman.com/view/44006656/2sBXVbGDER
-Booking API: https://documenter.getpostman.com/view/44006656/2sBXVbGDES
-Event API: https://documenter.getpostman.com/view/44006656/2sBXVbGDET
+* Autentikasi API: https://documenter.getpostman.com/view/44006656/2sBXVbGDER
+* Booking API: https://documenter.getpostman.com/view/44006656/2sBXVbGDES
+* Event API: https://documenter.getpostman.com/view/44006656/2sBXVbGDET
 
 ## ▶️ Cara Menjalankan Project
 1. Clone repository
@@ -92,6 +92,7 @@ Ini **STRUKTUR FOLDER LENGKAP** sesuai **punya kamu**, tanpa penjelasan panjang.
 ---
 ## 📁 Struktur Folder
 
+```bash
 BE_Program_MaulanaAdiatma/
 ├── assets/
 │   └── *.jpg / *.png / *.webp
@@ -124,6 +125,6 @@ BE_Program_MaulanaAdiatma/
 ├── go.sum
 ├── main.go
 └── README.md
-
 ```
+
 
